@@ -48,13 +48,13 @@
 
 <script>
 	function list() {
-		location.href = '${path}/memo_servlet/memoList.do';
+		location.href = '${path}/memo_servlet/List.do';
 	}
 
 	function sakjae() {
 		
 		sakjaeForm.method = 'post';
-		sakjaeForm.action = '${path}/memo_servlet/memoSakjaeProc.do';
+		sakjaeForm.action = '${path}/memo_servlet/SakjaeProc.do';
 		sakjaeForm.submit();
 	}
 </script>

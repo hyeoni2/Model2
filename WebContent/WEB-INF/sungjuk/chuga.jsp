@@ -84,7 +84,7 @@ $(function() {
 <script type="text/javascript">
 
 function list() {
-	location.href = '${path}/sungjuk_servlet/sungjukList.do';
+	location.href = '${path}/sungjuk_servlet/List.do';
 }
 
 function chuga() {
@@ -134,7 +134,7 @@ function chuga() {
 	
 	if(confirm('등록하시겠습니까?')){
 		chugaForm.method = 'post';
-		chugaForm.action = '${path}/sungjuk_servlet/sungjukChugaProc.do';
+		chugaForm.action = '${path}/sungjuk_servlet/ChugaProc.do';
 		chugaForm.submit();
 	}
 		

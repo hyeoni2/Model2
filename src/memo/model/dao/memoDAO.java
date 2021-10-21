@@ -26,7 +26,7 @@ public class memoDAO {
 		
 	}
 	
-	public void getClose() {
+	public void getConnClose() {
 		
 		DB.dbConnClose(rs, pstmt, conn);
 	
@@ -57,7 +57,7 @@ public class memoDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			getClose();
+			getConnClose();
 		}
 		
 		return list;
@@ -84,7 +84,7 @@ public class memoDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			getClose();
+			getConnClose();
 		}
 		
 		return result;
@@ -111,7 +111,7 @@ public class memoDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			getClose();
+			getConnClose();
 		}
 		
 		return dto;
@@ -138,7 +138,7 @@ public class memoDAO {
 			}catch (Exception e) {
 				e.printStackTrace();
 			}finally {
-				getClose();
+				getConnClose();
 			}
 			
 			return result;
@@ -162,7 +162,7 @@ public class memoDAO {
 			}catch (Exception e) {
 				e.printStackTrace();
 			}finally {
-				getClose();
+				getConnClose();
 			}
 			
 			return result;

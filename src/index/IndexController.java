@@ -32,6 +32,7 @@ public class IndexController extends HttpServlet {
 		 포워딩은 주소가 바뀌지 않는 반면, 리다이렉트는 주소가 바뀜 
 		 */
 		
+		
 		String page = "/WEB-INF/index.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(page);
 		rd.forward(request, response);

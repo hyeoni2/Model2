@@ -147,7 +147,7 @@ $(function() {
 
 	
 	function list() {
-		location.href = '${path}/member_servlet/memberList.do';
+		location.href = '${path}/member_servlet/List.do';
 	}
 
 	function chuga() {
@@ -222,7 +222,7 @@ $(function() {
 		if(confirm('등록하시겠습니까?')){
 			
 			chugaForm.method = 'post';
-			chugaForm.action = '${path}/member_servlet/memberChugaProc.do';
+			chugaForm.action = '${path}/member_servlet/ChugaProc.do';
 			chugaForm.submit();
 		}
 	}

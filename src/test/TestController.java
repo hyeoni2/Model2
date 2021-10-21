@@ -1,8 +1,11 @@
-package test;
+ 	package test;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -11,6 +14,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.tika.Tika;
+import org.jfree.chart.axis.Tick;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -452,7 +458,10 @@ public class TestController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
 
-		}else if(url.contains("test11Proc.do") == true) {	
+		
+		
+		//하나하나 다 추가
+		}else if(url.contains("test11Proc1.do") == true) {	
 			String attach_path = "C:/sh/attach";
 			String upload_path = attach_path + "/product_img";//첨부파일 저장위치
 			int max_upload = 1 * 1024 * 1024;//10m 최대 업로드 10m로 제한
@@ -470,7 +479,156 @@ public class TestController extends HttpServlet {
 				
 			}
 			
+			MultipartRequest multi = new MultipartRequest(
+					request,
+					upload_path,
+					max_upload,
+					"utf-8",
+					new DefaultFileRenamePolicy());
+	
+		
+		 //	하나하나 다 추가하는 방법
+			String filename1 = multi.getFilesystemName("file1");
+			String fileType1 = multi.getContentType("file1");
+			String fileOrgNmae1 = multi.getOriginalFileName("file1");
+			java.io.File file1 = multi.getFile("file1");
 			
+			long fileSize1 = 0;
+			if(file1 != null) {
+				fileSize1 = file1.length();
+				Tika tika = new Tika();
+				String tika1 = tika.detect(file1);				
+			}
+		
+
+			String name = multi.getParameter("name");
+			String phone = multi.getParameter("phone");
+			String tmp = multi.getParameter("upload_count");
+			int upload_count = Integer.parseInt(tmp);		
+			
+			String[] array = new String[upload_count];
+			
+			//파일들을 불러와서 처리하는 방법
+			Enumeration files = multi.getFileNames();
+			while (files.hasMoreElements()) {
+				String formTagName = (String)files.nextElement();
+				String fileOrgName = multi.getOriginalFileName(formTagName);
+				String fileName = multi.getFilesystemName(formTagName);
+				String fileType = multi.getContentType(formTagName);
+
+				if(formTagName == null || fileOrgName == null) {
+					System.out.println("첨부파일이 없습니다.");
+				}
+
+				long fileSize = 0;
+				String mineType = "";
+				java.io.File file = multi.getFile(formTagName);
+						if(file != null) {
+							fileSize = file.length();
+							Tika tika = new Tika();
+							mineType = tika.detect(file);				
+						}
+			
+				if(fileSize > 0 && mineType != null && mineType.equals(fileType)) {
+					String upload_info = "|";
+							upload_info +=  fileOrgName;
+							upload_info += ","+ fileName;
+							upload_info += ","+ fileType;
+							upload_info += ","+ fileSize;	
+				}}
+				
+			//***********************************************************//
+
+		//배열로 처리	
+		}else if(url.contains("test11Proc2.do") == true) {	
+
+			String attach_path = "C:/sh/attach";
+			String upload_path = attach_path + "/product_img";//첨부파일 저장위치
+			int max_upload = 1 * 1024 * 1024;//10m 최대 업로드 10m로 제한
+			
+			java.io.File isDir = new java.io.File(upload_path);
+			if(!isDir.exists()) {
+				try {
+					//System.out.println("디렉토리가 존재하지 않습니다.");
+					isDir.mkdirs();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else {
+				//System.out.println("디렉토리가 존재합니다.");
+				
+			}
+			
+			MultipartRequest multi = new MultipartRequest(
+					request,
+					upload_path,
+					max_upload,
+					"utf-8",
+					new DefaultFileRenamePolicy());
+
+
+			String name = multi.getParameter("name");
+			String phone = multi.getParameter("phone");
+			String tmp = multi.getParameter("upload_count");
+			int upload_count = Integer.parseInt(tmp);		
+			
+			String[] array = new String[upload_count];
+			
+			//파일들을 불러와서 처리하는 방법
+			Enumeration files = multi.getFileNames();
+			while (files.hasMoreElements()) {
+				String formTagName = (String)files.nextElement();
+				String fileOrgName = multi.getOriginalFileName(formTagName);
+				String fileName = multi.getFilesystemName(formTagName);
+				String fileType = multi.getContentType(formTagName);
+
+				if(formTagName == null || fileOrgName == null) {
+					System.out.println("첨부파일이 없습니다.");
+				}
+
+				long fileSize = 0;
+				String mineType = "";
+				java.io.File file = multi.getFile(formTagName);
+						if(file != null) {
+							fileSize = file.length();
+							Tika tika = new Tika();
+							mineType = tika.detect(file);				
+						}
+			
+				if(fileSize > 0 && mineType != null && mineType.equals(fileType)) {
+	
+					int temp = Integer.parseInt(formTagName);
+					array[temp] = fileOrgName + "," + fileName;
+						}
+							
+			}
+			for(int i = 0; i < array.length; i++) {
+				System.out.println("array["+i+"] : "+array[i]);
+			}
+
+		
+			
+			//***********************************************************//
+		
+		//for문 돌려서 확인
+		}else if(url.contains("test11Proc3.do") == true) {	
+		
+			String attach_path = "C:/sh/attach";
+			String upload_path = attach_path + "/product_img";//첨부파일 저장위치
+			int max_upload = 1 * 1024 * 1024;//10m 최대 업로드 10m로 제한
+			
+			java.io.File isDir = new java.io.File(upload_path);
+			if(!isDir.exists()) {
+				try {
+					//System.out.println("디렉토리가 존재하지 않습니다.");
+					isDir.mkdirs();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else {
+				//System.out.println("디렉토리가 존재합니다.");
+				
+			}
 			
 			MultipartRequest multi = new MultipartRequest(
 					request,
@@ -479,21 +637,67 @@ public class TestController extends HttpServlet {
 					"utf-8",
 					new DefaultFileRenamePolicy());
 			
-			String filename = multi.getFilesystemName("file");
-			String fileOrgNmae = multi.getOriginalFileName("file");
-			
-			if(filename == null || fileOrgNmae == null) {
-				System.out.println("첨부파일이 없습니다.");
-			}else {
-				System.out.println("filename : " + filename);
-				System.out.println("fileOrgNmae :" + fileOrgNmae);
-			}
-			
 			String name = multi.getParameter("name");
 			String phone = multi.getParameter("phone");
+			String tmp = multi.getParameter("upload_count");
+			int upload_count = Integer.parseInt(tmp);	
 			
-			System.out.println("name : "+name);
-			System.out.println("phone : "+ phone);
+			for(int i = 0; i < upload_count; i ++) {
+				String formTagName = ""+i;
+				
+				String fileOrgName = multi.getOriginalFileName(formTagName);
+				String fileName = multi.getFilesystemName(formTagName);
+				String fileType = multi.getContentType(formTagName);
+
+				long fileSize = 0;
+				String mineType = "";
+				java.io.File file = multi.getFile(formTagName);
+						if(file != null) {
+							fileSize = file.length();
+							Tika tika = new Tika();
+							mineType = tika.detect(file);				
+						}
+				
+			}
+		
+		
+		}else if(url.contains("test12.do") == true) {	
+			
+			String attach_path = "C:/sh/attach";
+			String upload_path = attach_path+"/product_img";
+			
+			java.io.File f1 = new java.io.File(upload_path);
+			java.io.File[] array = f1.listFiles();
+			
+
+			List<String> list = new ArrayList<>();
+			for(int i = 0; i < array.length; i ++) {
+				if(array[i].isFile()) {
+					//System.out.println("파일"+array[i].getPath());
+					
+				}else {
+					//System.out.println("폴더"+array[i].getPath());
+				}
+				list.add(array[i].getPath());
+			}
+			
+
+			request.setAttribute("list", list);
+			
+			String page = "/WEB-INF/test/test12/exam01.jsp";
+			RequestDispatcher rd = request.getRequestDispatcher(page);
+			rd.forward(request, response);
+			
+		}else if(url.contains("test12Proc.do") == true) {	
+			
+			String filePath = request.getParameter("filePath");
+			System.out.println(filePath);
+			
+			java.io.File f1 = new java.io.File(filePath);
+			f1.delete();
+			
+			response.sendRedirect(path + "/test_servlet/test12.do");
+			
 			
 		}else {
 			return;

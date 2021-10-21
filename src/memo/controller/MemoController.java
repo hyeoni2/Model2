@@ -36,7 +36,7 @@ public class MemoController extends HttpServlet {
 		String path = request.getContextPath();
 		String url = request.getRequestURL().toString();
 		
-		if(url.contains("memoList.do")) {
+		if(url.contains("List.do")) {
 			
 			memoDAO dao = new memoDAO();
 			List<MemoDTO> list = new ArrayList<>();
@@ -49,7 +49,7 @@ public class MemoController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
 
-		}else if(url.contains("memoView.do")) {
+		}else if(url.contains("View.do")) {
 			
 			String tmp = request.getParameter("no");
 			int no = Integer.parseInt(tmp);
@@ -69,13 +69,13 @@ public class MemoController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
 			
-		}else if(url.contains("memoChuga.do")) {
+		}else if(url.contains("Chuga.do")) {
 		
 			String page = "/WEB-INF/memo/chuga.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
 			
-		}else if(url.contains("memoChugaProc.do")) {
+		}else if(url.contains("ChugaProc.do")) {
 			
 			
 			String writer = request.getParameter("writer");
@@ -93,10 +93,10 @@ public class MemoController extends HttpServlet {
 			String msg = "";
 			if(result > 0) {
 				msg = "메모가 등록되었습니다.";
-				link = path + "/memo_servlet/memoList.do";	
+				link = path + "/memo_servlet/List.do";	
 			}else {
 				msg = "메모를 등록하는 과정에서 오류가 발생되었습니다.";
-				link = path + "/memo_servlet/memoChuga.do";	
+				link = path + "/memo_servlet/Chuga.do";	
 			}
 			System.out.println(msg);
 			System.out.println(link);
@@ -108,7 +108,7 @@ public class MemoController extends HttpServlet {
 			out.print("</script>");
 			
 			
-		}else if(url.contains("memoSujung.do")) {
+		}else if(url.contains("Sujung.do")) {
 			
 			String tmp = request.getParameter("no");
 			int no = Integer.parseInt(tmp);
@@ -127,7 +127,7 @@ public class MemoController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
 			
-		}else if(url.contains("memoSujungProc.do")) {
+		}else if(url.contains("SujungProc.do")) {
 			
 			String tmp = request.getParameter("no");
 			int no = Integer.parseInt(tmp);
@@ -147,10 +147,10 @@ public class MemoController extends HttpServlet {
 			String msg = "";
 			if(result > 0) {
 				msg = "메모가 수정되었습니다.";
-				link = path + "/memo_servlet/memoView.do?no="+no;	
+				link = path + "/memo_servlet/View.do?no="+no;	
 			}else {
 				msg = "메모를 수정하는 과정에서 오류가 발생되었습니다.";
-				link = path + "/memo_servlet/memoSujung.do?no="+no;	
+				link = path + "/memo_servlet/Sujung.do?no="+no;	
 			}
 			System.out.println(msg);
 			System.out.println(link);
@@ -162,7 +162,7 @@ public class MemoController extends HttpServlet {
 			out.print("</script>");
 			
 
-		}else if(url.contains("memoSakjae.do")) {
+		}else if(url.contains("Sakjae.do")) {
 			
 			String tmp = request.getParameter("no");
 			int no = Integer.parseInt(tmp);
@@ -181,7 +181,7 @@ public class MemoController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
 			
-		}else if(url.contains("memoSakjaeProc.do")) {	
+		}else if(url.contains("SakjaeProc.do")) {	
 			
 			String tmp = request.getParameter("no");
 			int no = Integer.parseInt(tmp);
@@ -198,10 +198,10 @@ public class MemoController extends HttpServlet {
 			String msg = "";
 			if(result > 0) {
 				msg = "메모가 삭제되었습니다.";
-				link = path + "/memo_servlet/memoList.do";	
+				link = path + "/memo_servlet/List.do";	
 			}else {
 				msg = "메모를 삭제하는 과정에서 오류가 발생되었습니다.";
-				link = path + "/memo_servlet/memoSakjae.do?no="+no;	
+				link = path + "/memo_servlet/Sakjae.do?no="+no;	
 			}
 			System.out.println(msg);
 			System.out.println(link);

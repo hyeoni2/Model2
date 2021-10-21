@@ -84,14 +84,14 @@
 <script type="text/javascript">
 
 function list() {
-	location.href = '${path}/sungjuk_servlet/sungjukList.do';
+	location.href = '${path}/sungjuk_servlet/List.do';
 }
 
 function sujung() {
 	
 	if(confirm('수정하시겠습니까?')){
 		sujungForm.method = 'post';
-		sujungForm.action = '${path}/sungjuk_servlet/sungjukSujungProc.do';
+		sujungForm.action = '${path}/sungjuk_servlet/SujungProc.do';
 		sujungForm.submit();
 	}
 		

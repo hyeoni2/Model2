@@ -77,14 +77,14 @@
 <script type="text/javascript">
 
 function list() {
-	location.href = '${path}/sungjuk_servlet/sungjukList.do';
+	location.href = '${path}/sungjuk_servlet/List.do';
 }
 
 function sakjae() {
 	
 	if(confirm('삭제하시겠습니까?')){
 		sakjaeForm.method = 'post';
-		sakjaeForm.action = '${path}/sungjuk_servlet/sungjukSakjaeProc.do';
+		sakjaeForm.action = '${path}/sungjuk_servlet/SakjaeProc.do';
 		sakjaeForm.submit();
 	}
 		

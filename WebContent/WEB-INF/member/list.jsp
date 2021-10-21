@@ -29,7 +29,7 @@
 		</td>
 	
 		<td>
-			<a href="${path }/member_servlet/memberView.do?no=${dto.no}">
+			<a href="${path }/member_servlet/View.do?no=${dto.no}">
 				${dto.id }
 			</a>
 		</td>
@@ -66,7 +66,7 @@
 <c:if test="${sessionScope.cookAbility eq 'A' || sessionScope.cookAbility eq 'B' }">
 
 |
-<a href = "${path}/member_servlet/memberChuga.do">등록</a>
+<a href = "${path}/member_servlet/Chuga.do">등록</a>
 |
 
 </c:if>

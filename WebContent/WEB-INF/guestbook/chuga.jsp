@@ -58,7 +58,7 @@ $(function() {
 
 	
 	function list() {
-		location.href = '${path}/guestbook_servlet/guestbookList.do';
+		location.href = '${path}/guestbook_servlet/List.do';
 	}
 
 	function chuga() {
@@ -82,7 +82,7 @@ $(function() {
 		}
 		if(confirm('등록하시겠습니까?')){
 			chugaForm.method = 'post';
-			chugaForm.action = '${path}/guestbook_servlet/guestbookChugaProc.do';
+			chugaForm.action = '${path}/guestbook_servlet/ChugaProc.do';
 			chugaForm.submit();
 		}	
 	}

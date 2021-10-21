@@ -25,29 +25,43 @@
 <a href="${path }/test_servlet/test10.do">test10</a>
 |
 <a href="${path }/test_servlet/test11.do">test11</a>
-
-<br>
-
-<a href="${path }/member_servlet/memberList.do">회원관리</a>
 |
-<a href="${path }/sungjuk_servlet/sungjukList.do">성적관리</a>
-|
-<a href="${path }/memo_servlet/memoList.do">메모관리</a>
-|
-<a href="${path }/guestbook_servlet/guestbookList.do">방명록</a>
-|
-<a href="${path }/product_servlet/productList.do">상품관리</a>
+<a href="${path }/test_servlet/test12.do">test12</a>
 
 &nbsp;&nbsp;&nbsp;
 <c:choose>
 	<c:when test="${sessionScope.cookNor == null || sessionScope.cookNor == 0}">
-		<a href="${path }/member_servlet/memberLogin.do">로그인</a>
+		<a href="${path }/member_servlet/Login.do">로그인</a>
 	</c:when>
 	<c:otherwise>
 		[<b style="color: blue">${sessionScope.cookName }</b>]님,
-		<a href="${path }/member_servlet/memberLogout.do">로그아웃</a>	
+		<a href="${path }/member_servlet/Logout.do">로그아웃</a>	
 	</c:otherwise>
 </c:choose>
+
+<br>
+
+<a href="${path }/member_servlet/List.do">회원관리</a>
+|
+<a href="${path }/sungjuk_servlet/List.do">성적관리</a>
+|
+<a href="${path }/memo_servlet/List.do">메모관리</a>
+|
+<a href="${path }/survey_servlet/List.do">설문조사</a>
+|
+<a href="${path }/guestbook_servlet/List.do">방명록</a>
+|
+<a href="${path }/board_servlet/List.do">게시판</a>
+|
+<a href="${path }/product_servlet/List.do">상품관리</a>
+|
+<a href="${path }/shop_servlet/List.do">SHOP</a>
+|
+<a href="${path }/boardBasicMybatis_servlet/List.do">게시판{Mybatis}</a>
+|
+
+
+
 
 
 

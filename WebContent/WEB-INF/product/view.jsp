@@ -10,6 +10,9 @@
 <%@include file="../include/inc_menu.jsp"  %>
 <h2>상품 상세 정보</h2>
 <c:forEach items="${list }" var="dto">
+<c:set var="main" value="${fn:split(dto.product_img,',')[0]}"></c:set>
+<c:set var="gita1" value="${fn:split(dto.product_img,',')[1]}"></c:set>
+<c:set var="gita2" value="${fn:split(dto.product_img,',')[2]}"></c:set>
 <table border="1">
 		<tr>
 			<td>
@@ -26,7 +29,7 @@
 			</td>
 	
 			<td>
-				${dto.price}
+				<fmt:formatNumber value="${dto.price }" pattern="#,###,###"/>
 			</td>
 		</tr>
 		<tr>
@@ -35,12 +38,34 @@
 			</td>
 	
 			<td>
-					<c:choose>
-				<c:when test="${dto.product_img == '-' }">
-					이미지 없음
-				</c:when>
-				<c:otherwise>
-					<img src="${path }/attach/product_img/${dto.product_img}" width="100" height="70">
+				<c:choose>
+							<c:when test="${main == '-' && gita1 == '-'  && gita2 == '-'}">
+						이미지 없음
+					</c:when>
+					<c:when test="${main != '-' && gita1 == '-'  && gita2 == '-'}">
+						<img src="${path }/attach/product_img/${main}" width="100" height="70">
+					</c:when>
+					<c:when test="${main != '-' && gita1 == '-'  && gita2 != '-'}">
+						<img src="${path }/attach/product_img/${main}" width="100" height="70">
+						<img src="${path }/attach/product_img/${gita2}" width="100" height="70">
+					</c:when>
+					<c:when test="${main != '-' && gita1 != '-'  && gita2 == '-'}">
+						<img src="${path }/attach/product_img/${main}" width="100" height="70">
+						<img src="${path }/attach/product_img/${gita1}" width="100" height="70">
+					</c:when>
+				
+					<c:when test="${main == '-' && gita1 != '-'  && gita2 == '-'}">
+						<img src="${path }/attach/product_img/${gita1}" width="100" height="70">
+					</c:when>
+					
+					<c:when test="${main == '-' && gita1 == '-'  && gita2 != '-'}">
+						<img src="${path }/attach/product_img/${gita2}" width="100" height="70">
+					</c:when>
+				
+					<c:otherwise>						
+						<img src="${path }/attach/product_img/${main}" width="100" height="70">
+						<img src="${path }/attach/product_img/${gita1}" width="100" height="70">
+						<img src="${path }/attach/product_img/${gita2}" width="100" height="70">
 				</c:otherwise>
 			</c:choose>
 			</td>
@@ -90,30 +115,30 @@
 <c:choose>
 	<c:when test="${sessionScope.cookAbility eq 'A'}">
 		|
-		<a href="${path }/product_servlet/productChuga.do">등록</a>
+		<a href="${path }/product_servlet/Chuga.do">등록</a>
 		|
 		
-		<a href="${path }/product_servlet/productSujung.do?no=${dto.no}">수정</a>
+		<a href="${path }/product_servlet/Sujung.do?no=${dto.no}">수정</a>
 		|
 		
-		<a href="${path }/product_servlet/productList.do">목록</a>
+		<a href="${path }/product_servlet/List.do">목록</a>
 		|
-		<a href="${path }/product_servlet/productSakjae.do?no=${dto.no}">삭제</a>
+		<a href="${path }/product_servlet/Sakjae.do?no=${dto.no}">삭제</a>
 		|
 	</c:when>	
 	<c:when test="${sessionScope.cookAbility eq 'B'}">
 		|
-		<a href="${path }/product_servlet/productChuga.do">등록</a>
+		<a href="${path }/product_servlet/Chuga.do">등록</a>
 		|
 		
-		<a href="${path }/product_servlet/productSujung.do?no=${dto.no}">수정</a>
+		<a href="${path }/product_servlet/Sujung.do?no=${dto.no}">수정</a>
 		|
-		<a href="${path }/product_servlet/productList.do">목록</a>
+		<a href="${path }/product_servlet/List.do">목록</a>
 		|
 	</c:when>
 	<c:otherwise>
 		|
-		<a href="${path }/product_servlet/productList.do">목록</a>
+		<a href="${path }/product_servlet/List.do">목록</a>
 		|
 	</c:otherwise>
 </c:choose>

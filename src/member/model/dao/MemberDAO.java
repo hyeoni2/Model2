@@ -26,7 +26,7 @@ public class MemberDAO {
 		
 	}
 	
-	public void getClose() {
+	public void getConnClose() {
 		
 		DB.dbConnClose(rs, pstmt, conn);
 	
@@ -61,7 +61,7 @@ public class MemberDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			getClose();
+			getConnClose();
 		}
 		
 		return list;
@@ -91,7 +91,7 @@ public class MemberDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			getClose();
+			getConnClose();
 		}
 		
 		return result;
@@ -122,7 +122,7 @@ public class MemberDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			getClose();
+			getConnClose();
 		}
 		
 		return dto;
@@ -151,7 +151,7 @@ public class MemberDAO {
 			}catch (Exception e) {
 				e.printStackTrace();
 			}finally {
-				getClose();
+				getConnClose();
 			}
 			
 			return result;
@@ -175,7 +175,7 @@ public class MemberDAO {
 			}catch (Exception e) {
 				e.printStackTrace();
 			}finally {
-				getClose();
+				getConnClose();
 			}
 			
 			return result;
@@ -203,7 +203,7 @@ public class MemberDAO {
 			}catch (Exception e) {
 				e.printStackTrace();
 			}finally {
-				getClose();
+				getConnClose();
 			}
 			
 			return dto2;

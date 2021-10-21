@@ -56,7 +56,7 @@
 
 	
 	function list() {
-		location.href = '${path}/guestbook_servlet/guestbookList.do';
+		location.href = '${path}/guestbook_servlet/List.do';
 	}
 
 	function sakjae() {
@@ -64,7 +64,7 @@
 
 		if(confirm('삭제하시겠습니까?')){
 			sakjaeForm.method = 'post';
-			sakjaeForm.action = '${path}/guestbook_servlet/guestbookSakjaeProc.do';
+			sakjaeForm.action = '${path}/guestbook_servlet/SakjaeProc.do';
 			sakjaeForm.submit();
 		}	
 	}

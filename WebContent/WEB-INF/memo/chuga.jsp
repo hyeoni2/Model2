@@ -46,7 +46,7 @@ $(function() {
 
 	
 	function list() {
-		location.href = '${path}/memo_servlet/memoList.do';
+		location.href = '${path}/memo_servlet/List.do';
 	}
 
 	function chuga() {
@@ -65,7 +65,7 @@ $(function() {
 		
 		if(confirm('등록하시겠습니까?')){
 			chugaForm.method = 'post';
-			chugaForm.action = '${path}/memo_servlet/memoChugaProc.do';
+			chugaForm.action = '${path}/memo_servlet/ChugaProc.do';
 			chugaForm.submit();
 		}	
 	}

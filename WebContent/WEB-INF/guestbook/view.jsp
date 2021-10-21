@@ -51,13 +51,13 @@
 		
 </table>
 |
-<a href="${path }/guestbook_servlet/guestbookChuga.do">등록</a>
+<a href="${path }/guestbook_servlet/Chuga.do">등록</a>
 |
-<a href="${path }/guestbook_servlet/guestbookSujung.do?no=${dto.no}">수정</a>
+<a href="${path }/guestbook_servlet/Sujung.do?no=${dto.no}">수정</a>
 |
-<a href="${path }/guestbook_servlet/guestbookList.do">목록</a>
+<a href="${path }/guestbook_servlet/List.do">목록</a>
 |
-<a href="${path }/guestbook_servlet/guestbookSakjae.do?no=${dto.no}">삭제</a>
+<a href="${path }/guestbook_servlet/Sakjae.do?no=${dto.no}">삭제</a>
 |
 
 </c:forEach>

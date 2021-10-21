@@ -22,6 +22,7 @@
 
 
  <c:forEach var="dto" items="${list }" >
+<c:set var="main" value="${fn:split(dto.product_img,',')[0]}"></c:set>
 	
 	<tr>
 		<td>
@@ -29,18 +30,18 @@
 		</td>
 		
 		<td>
-			<a href="${path }/product_servlet/productView.do?no=${dto.no}">
+			<a href="${path }/product_servlet/View.do?no=${dto.no}">
 				${dto.name }
 			</a>
 		</td>
 	
 		<td>
 			<c:choose>
-				<c:when test="${dto.product_img == '-' }">
+				<c:when test="${main == '-' }">
 					이미지 없음
 				</c:when>
 				<c:otherwise>
-					<img src="${path }/attach/product_img/${dto.product_img}" width="100" height="70">
+					<img src="${path }/attach/product_img/${main}" width="100" height="70">
 				</c:otherwise>
 			</c:choose>
 		
@@ -53,7 +54,7 @@
 	
 	
 		<td>
-				${dto.price }
+				<fmt:formatNumber value="${dto.price }" pattern="#,###,###"/>
 		</td>
 	
 		<td>
@@ -74,7 +75,7 @@
 <br>
 <c:if test="${sessionScope.cookAbility eq 'A' || sessionScope.cookAbility eq 'B' }">
 	|
-	<a href = "${path}/product_servlet/productChuga.do">등록</a>
+	<a href = "${path}/product_servlet/Chuga.do">등록</a>
 	|
 </c:if>
 </body>

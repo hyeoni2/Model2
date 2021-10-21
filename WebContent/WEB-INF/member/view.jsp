@@ -70,32 +70,32 @@
 </table>
 
 <c:choose>
-	<c:when test="${sessionScope.cookAbility eq 'admin'}">
+	<c:when test="${sessionScope.cookAbility eq 'A'}">
 		|
-		<a href="${path }/member_servlet/memberChuga.do">등록</a>
-		|
-		
-		<a href="${path }/member_servlet/memberSujung.do?no=${dto.no}">수정</a>
+		<a href="${path }/member_servlet/Chuga.do">등록</a>
 		|
 		
-		<a href="${path }/member_servlet/memberList.do">목록</a>
+		<a href="${path }/member_servlet/Sujung.do?no=${dto.no}">수정</a>
 		|
-		<a href="${path }/member_servlet/memberSakjae.do?no=${dto.no}">삭제</a>
+		
+		<a href="${path }/member_servlet/List.do">목록</a>
+		|
+		<a href="${path }/member_servlet/Sakjae.do?no=${dto.no}">삭제</a>
 		|
 	</c:when>	
-	<c:when test="${sessionScope.cookAbility eq 'employee'}">
+	<c:when test="${sessionScope.cookAbility eq 'B'}">
 		|
-		<a href="${path }/member_servlet/memberChuga.do">등록</a>
+		<a href="${path }/member_servlet/Chuga.do">등록</a>
 		|
 		
-		<a href="${path }/member_servlet/memberSujung.do?no=${dto.no}">수정</a>
+		<a href="${path }/member_servlet/Sujung.do?no=${dto.no}">수정</a>
 		|
-		<a href="${path }/member_servlet/memberList.do">목록</a>
+		<a href="${path }/member_servlet/List.do">목록</a>
 		|
 	</c:when>
 	<c:otherwise>
 		|
-		<a href="${path }/member_servlet/memberList.do">목록</a>
+		<a href="${path }/member_servlet/List.do">목록</a>
 		|
 	</c:otherwise>
 </c:choose>

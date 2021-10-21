@@ -26,7 +26,7 @@
 	<tr>
 		<td>${dto.no }</td>
 		<td>
-			<a href="${path}/sungjuk_servlet/sungjukView.do?no=${dto.no}">
+			<a href="${path}/sungjuk_servlet/View.do?no=${dto.no}">
 				${dto.name }
 			</a>
 		</td>
@@ -51,7 +51,7 @@
 <br>
 <c:if test="${sessionScope.cookAbility eq 'A' || sessionScope.cookAbility eq 'B' }">
 |
-<a href="${path }/sungjuk_servlet/sungjukChuga.do">등록</a>
+<a href="${path }/sungjuk_servlet/Chuga.do">등록</a>
 |
 </c:if>
 </body>

@@ -128,11 +128,11 @@ function submitPro(value1) {
 	
 	
 	if(value1 == "M"){
-		url = "${path}/guestbook_servlet/guestbookSujungProc.do";
+		url = "${path}/guestbook_servlet/SujungProc.do";
 	}else if(value1 == "D"){
-		url = "${path}/guestbook_servlet/guestbookSakjeProc.do";
+		url = "${path}/guestbook_servlet/SakjeProc.do";
 	}else{
-		url = "${path}/guestbook_servlet/guestbookChugaProc.do";
+		url = "${path}/guestbook_servlet/ChugaProc.do";
 		
 	}
 	
@@ -160,7 +160,7 @@ function submitPro(value1) {
 	
 		<td>${dto.no }</td>
 		<td>
-			<a href="${path }/guestbook_servlet/guestbookView.do?no=${dto.no}">
+			<a href="${path }/guestbook_servlet/View.do?no=${dto.no}">
 				${dto.name }
 			</a>
 		</td>

@@ -100,13 +100,13 @@
 
 <script>
 	function list() {
-		location.href = '${path}/member_servlet/memberList.do';
+		location.href = '${path}/member_servlet/List.do';
 	}
 
 	function sujung() {
 		
 		sujungForm.method = 'post';
-		sujungForm.action = '${path}/member_servlet/memberSujungProc.do';
+		sujungForm.action = '${path}/member_servlet/SujungProc.do';
 		sujungForm.submit();
 	}
 </script>

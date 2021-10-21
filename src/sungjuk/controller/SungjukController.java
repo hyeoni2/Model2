@@ -62,7 +62,7 @@ public class SungjukController extends HttpServlet {
 			  }
 		  }
 		
-		if(url.contains("sungjukList.do")) {
+		if(url.contains("List.do")) {
 			
 			SungjukDAO dao = new SungjukDAO();
 			
@@ -77,7 +77,7 @@ public class SungjukController extends HttpServlet {
 			rd.forward(request, response);
 			
 		//뷰	
-		}else if(url.contains("sungjukView.do")) {
+		}else if(url.contains("View.do")) {
 			
 			String tmp = request.getParameter("no");
 			int no = Integer.parseInt(tmp);
@@ -96,13 +96,13 @@ public class SungjukController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
 		
-		}else if(url.contains("sungjukChuga.do")) {
+		}else if(url.contains("Chuga.do")) {
 			
 			String page = "/WEB-INF/sungjuk/chuga.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
 			
-		}else if(url.contains("sungjukChugaProc.do")) {
+		}else if(url.contains("ChugaProc.do")) {
 			
 			String id = request.getParameter("id");
 			String name = request.getParameter("name");
@@ -158,10 +158,10 @@ public class SungjukController extends HttpServlet {
 			String link = "";
 			if(result > 0) {
 				msg = "성적등록이 완료되었습니다.";
-				link = path+"/sungjuk_servlet/sungjukList.do";
+				link = path+"/sungjuk_servlet/List.do";
 			}else {
 				msg = "성적을 등록하는 과정에서 오류가 발생되었습니다.";
-				link = path+"/sungjuk_servlet/sungjukChuga.do";
+				link = path+"/sungjuk_servlet/Chuga.do";
 			}
 			
 			PrintWriter out = response.getWriter();
@@ -171,7 +171,7 @@ public class SungjukController extends HttpServlet {
 			out.print("</script>");
 					
 		
-		}else if(url.contains("sungjukSujung.do")) {
+		}else if(url.contains("Sujung.do")) {
 			
 			String tmp = request.getParameter("no");
 			int no = Integer.parseInt(tmp);
@@ -190,7 +190,7 @@ public class SungjukController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
 		
-		}else if(url.contains("sungjukSujungProc.do")) {
+		}else if(url.contains("SujungProc.do")) {
 			
 			String name = request.getParameter("name");
 			String sihum_name = request.getParameter("sihum_name");
@@ -248,10 +248,10 @@ public class SungjukController extends HttpServlet {
 			String link = "";
 			if(result > 0) {
 				msg = "성적수정이 완료되었습니다.";
-				link = path+"/sungjuk_servlet/sungjukView.do?no="+no;
+				link = path+"/sungjuk_servlet/View.do?no="+no;
 			}else {
 				msg = "성적을 수정하는 과정에서 오류가 발생되었습니다.";
-				link = path+"/sungjuk_servlet/sungjukSujung.do";
+				link = path+"/sungjuk_servlet/Sujung.do";
 			}
 			
 			PrintWriter out = response.getWriter();
@@ -261,7 +261,7 @@ public class SungjukController extends HttpServlet {
 			out.print("</script>");
 			
 			
-		}else if(url.contains("sungjukSakjae.do")) {
+		}else if(url.contains("Sakjae.do")) {
 			
 			String tmp = request.getParameter("no");
 			int no = Integer.parseInt(tmp);
@@ -280,7 +280,7 @@ public class SungjukController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
 			
-		}else if(url.contains("sungjukSakjaeProc.do")) {
+		}else if(url.contains("SakjaeProc.do")) {
 			
 			String tmp = request.getParameter("no");
 			int no = Integer.parseInt(tmp);
@@ -294,10 +294,10 @@ public class SungjukController extends HttpServlet {
 			String link = "";
 			if(result > 0) {
 				msg = "성적삭제가 완료되었습니다.";
-				link = path+"/sungjuk_servlet/sungjukList.do";
+				link = path+"/sungjuk_servlet/List.do";
 			}else {
 				msg = "성적을 삭제하는 과정에서 오류가 발생되었습니다.";
-				link = path+"/sungjuk_servlet/sungjukSakjae.do?no="+no;
+				link = path+"/sungjuk_servlet/Sakjae.do?no="+no;
 			}
 			
 			PrintWriter out = response.getWriter();

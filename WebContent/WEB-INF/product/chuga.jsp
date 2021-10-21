@@ -25,8 +25,27 @@ $(function() {
 			<td><input type="text" name="name" id="name"></td>
 		</tr>
 		<tr>
-			<td>상품 이미지</td>
-			<td><input type="file" name="product_img" id="product_img"></td>
+			<td>메인 이미지</td>
+			<td>
+				<input type="file" name="0" id="0" class="fileUp">
+			</td>
+		</tr>
+		<tr>
+			<td>상세 이미지1</td>
+			<td>
+				<input type="file" name="1" id="1" class="fileUp">
+			</td>
+		</tr>
+		<tr>
+			<td>상세 이미지2</td>
+			<td>
+				<input type="file" name="2" id="2" class="fileUp">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input type="hidden" name="count">
+			</td>
 		</tr>
 		<tr>
 			<td>상품 설명</td>
@@ -56,10 +75,11 @@ $(function() {
 
 	
 	function list() {
-		location.href = '${path}/product_servlet/productList.do';
+		location.href = '${path}/product_servlet/List.do';
 	}
 
 	function chuga() {
+
 		
 		if(chugaForm.name.value == ""){
 			alert('상품이름을 입력해주세요');
@@ -79,9 +99,11 @@ $(function() {
 			return;
 		}
 		
+		
 		if(confirm('등록하시겠습니까?')){
+			chugaForm.count.value = chugaForm.getElementsByClassName("fileUp").length;
 			chugaForm.enctype = "multipart/form-data";
-			chugaForm.action = '${path}/product_servlet/productChugaProc.do';
+			chugaForm.action = '${path}/product_servlet/ChugaProc.do';
 			chugaForm.method = 'post';
 			chugaForm.submit();
 		}	

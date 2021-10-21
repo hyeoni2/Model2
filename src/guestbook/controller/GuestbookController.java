@@ -49,11 +49,11 @@ public class GuestbookController extends HttpServlet {
 	
 		  if(cookNo == 0) {
 			  
-			  if(url.contains("memberLogin.do")) {				  
+			  if(url.contains("Login.do")) {				  
 			  
-			  }else if(url.contains("memberLoginProc.do")) {				  
+			  }else if(url.contains("LoginProc.do")) {				  
 			
-			  }else if(url.contains("memberLogout.do")) {				  
+			  }else if(url.contains("Logout.do")) {				  
 		
 			  }else {
 			  
@@ -68,7 +68,7 @@ public class GuestbookController extends HttpServlet {
 		
 		
 		//리스트
-		if(url.contains("guestbookList.do")) {
+		if(url.contains("List.do")) {
 			
 			GuestbookDAO dao = new GuestbookDAO();
 			List<GuestbookDTO> list = new ArrayList<>();
@@ -81,7 +81,7 @@ public class GuestbookController extends HttpServlet {
 			rd.forward(request, response);
 			
 		//뷰	
-		}else if(url.contains("guestbookView.do")) {
+		}else if(url.contains("View.do")) {
 			
 			String tmp = request.getParameter("no");
 			int no = Integer.parseInt(tmp);
@@ -103,14 +103,14 @@ public class GuestbookController extends HttpServlet {
 			rd.forward(request, response);
 		
 		//추가
-		}else if(url.contains("guestbookChuga.do")) {
+		}else if(url.contains("Chuga.do")) {
 			
 			String page = "/WEB-INF/guestbook/chuga.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
 		
 		//추가설정
-		}else if(url.contains("guestbookChugaProc.do")) {
+		}else if(url.contains("ChugaProc.do")) {
 			
 			String name = request.getParameter("name");
 			String email = request.getParameter("email");
@@ -134,13 +134,13 @@ public class GuestbookController extends HttpServlet {
 				msg = "방명록을 등록하였습니다.";
 			   link = "${path}/guestbook_servlet/guestbookList.do";
 			*/
-				response.sendRedirect(path + "/guestbook_servlet/guestbookList.do");
+				response.sendRedirect(path + "/guestbook_servlet/List.do");
 			}else {
 			 /*
 				msg = "방명록을 등록하는 과정에서 오류가 발생하였습니다..";
 				link = "${path}/guestbook_servlet/guestbookChuga.do";				
 			*/	
-				response.sendRedirect(path + "/guestbook_servlet/guestbookError.do?error_code=errChu");
+				response.sendRedirect(path + "/guestbook_servlet/Error.do?error_code=errChu");
 			}
 			
 			
@@ -153,7 +153,7 @@ public class GuestbookController extends HttpServlet {
 			*/
 			
 		//수정
-		}else if(url.contains("guestbookSujung.do")) {
+		}else if(url.contains("Sujung.do")) {
 			
 			String tmp = request.getParameter("no");
 			int no = Integer.parseInt(tmp);
@@ -175,7 +175,7 @@ public class GuestbookController extends HttpServlet {
 			rd.forward(request, response);
 		
 		//수정설정
-		}else if(url.contains("guestbookSujungProc.do")) {
+		}else if(url.contains("SujungProc.do")) {
 			
 			String tmp = request.getParameter("no");
 			int	no = Integer.parseInt(tmp);
@@ -202,13 +202,13 @@ public class GuestbookController extends HttpServlet {
 				msg = "방명록을 수정하였습니다.";
 			   	link = "${path}/guestbook_servlet/guestbookView.do?no="+no;
 				*/
-				response.sendRedirect(path + "/guestbook_servlet/guestbookView.do?no="+no);
+				response.sendRedirect(path + "/guestbook_servlet/View.do?no="+no);
 			}else {
 				/*	
 				msg = "방명록을 수정하는 과정에서 오류가 발생하였습니다.";
 				link = "${path}/guestbook_servlet/guestbookSujung.do?no="+no;				
 				*/
-				response.sendRedirect(path + "/guestbook_servlet/guestbookError.do?error_code=errSue");
+				response.sendRedirect(path + "/guestbook_servlet/Error.do?error_code=errSue");
 			}
 			
 	
@@ -220,7 +220,7 @@ public class GuestbookController extends HttpServlet {
 		*/
 			
 		//삭제	
-		}else if(url.contains("guestbookSakjae.do")) {
+		}else if(url.contains("Sakjae.do")) {
 			
 			String tmp = request.getParameter("no");
 			int no = Integer.parseInt(tmp);
@@ -243,7 +243,7 @@ public class GuestbookController extends HttpServlet {
 			rd.forward(request, response);
 			
 		//삭제설정	
-		}else if(url.contains("guestbookSakjaeProc.do")) {
+		}else if(url.contains("SakjaeProc.do")) {
 			
 			String tmp = request.getParameter("no");
 			int no = Integer.parseInt(tmp);
@@ -264,13 +264,13 @@ public class GuestbookController extends HttpServlet {
 				msg = "방명록을 삭제하였습니다.";
 			    link = "${path}/guestbook_servlet/guestbookList.do";
 			   */
-			   response.sendRedirect("${path}/guestbook_servlet/guestbookList.do");
+			   response.sendRedirect("${path}/guestbook_servlet/List.do");
 			}else {
 				/*
 				msg = "방명록을 삭제하는 과정에서 오류가 발생하였습니다.";
 				link = "${path}/guestbook_servlet/guestbookSakjae.do?no="+no;				
 				*/
-				response.sendRedirect(path + "/guestbook_servlet/guestbookError.do?error_code=errSak");
+				response.sendRedirect(path + "/guestbook_servlet/Error.do?error_code=errSak");
 			}
 			
 			
@@ -282,7 +282,7 @@ public class GuestbookController extends HttpServlet {
 				out.print("</script>");
 			*/
 			
-		}else if(url.contains("guestbookError.do.do")) {
+		}else if(url.contains("Error.do.do")) {
 			
 			String error_code = request.getParameter("error_code");
 			

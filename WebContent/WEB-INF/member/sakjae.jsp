@@ -14,12 +14,6 @@
 	<form name = "sakjaeForm">	
 			<input type="hidden" name="no" value="${dto.no }">
 		<table border="1" width = 30%>	
-								<tr>
-					<td>권한</td>
-					<td>
-						${dto.abilty }
-					</td>
-				</tr>
 				<tr>
 					<td>아이디</td>
 					<td>${dto.id}</td>
@@ -62,13 +56,13 @@
 
 <script>
 	function list() {
-		location.href = '${path}/member_servlet/memberList.do';
+		location.href = '${path}/member_servlet/List.do';
 	}
 
 	function sakjae() {
 		
 		sakjaeForm.method = 'post';
-		sakjaeForm.action = '${path}/member_servlet/memberSakjaeProc.do';
+		sakjaeForm.action = '${path}/member_servlet/SakjaeProc.do';
 		sakjaeForm.submit();
 	}
 </script>

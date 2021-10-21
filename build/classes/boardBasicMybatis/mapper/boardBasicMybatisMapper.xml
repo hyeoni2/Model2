@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="boardBasicMybatis">
+
+<select id="getSelectAll"  resultType="boardBasicMybatis.model.dto.BoardBasicMybatisDTO">
+
+	SELECT *
+	FROM   BOARDBASIC 
+	ORDER  BY REF DESC, RE_LEVEL ASC
+
+</select>
+
+<select id="getSelectOne"  resultType="boardBasicMybatis.model.dto.BoardBasicMybatisDTO">
+
+	SELECT *
+	FROM   BOARDBASIC 
+	WHERE  NO = #{no}
+
+</select>
+
+<select id="getMaxNum" resultType="int">
+	
+	SELECT NVL(MAX(NUM), 0) 
+	FROM   BOARDBASIC
+	
+</select>
+
+<select id="getMaxRef" resultType="int">
+	
+	SELECT NVL(MAX(REF), 0) 
+	FROM   BOARDBASIC
+	
+</select>
+
+<insert id="setInsert">
+
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+	
+			SELECT SEQ_BOARDBASIC.NEXTVAL
+			FROM   DUAL
+			
+		</selectKey>
+		
+
+		INSERT INTO BOARDBASIC
+		(
+		   NO
+		 , NUM
+		 , WRITER
+		 , SUBJECT
+		 , CONTENT
+		 , EMAIL
+		 , PASSWD
+		 , REF
+		 , RE_STEP
+		 , RE_LEVEL
+		 , HIT	
+		)
+		VALUES
+		(
+		   #{no}
+		 , #{dto.num}
+		 , #{dto.writer}
+		 , #{dto.subject}
+		 , #{dto.content}
+		 , #{dto.email}
+		 , #{dto.passwd}
+		 , #{dto.ref}
+		 , #{dto.re_step}
+		 , #{dto.re_level}
+		 , #{dto.hit}
+		)
+
+</insert>
+
+<update id="setUpdate">
+	  
+	  UPDATE ${table_name} SET
+	  SUBJECT = #{dto.subject}
+	, CONTENT = #{dto.content}
+	  WHERE NO = #{dto.no} AND PASSWD = #{dto.passwd}
+	  
+</update>
+
+<delete id="setDelete">
+	DELETE ${table_name} 
+	WHERE  NO = #{dto.no} AND PASSWD = #{dto.passwd}
+</delete>
+
+</mapper>

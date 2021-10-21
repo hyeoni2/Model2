@@ -51,11 +51,11 @@ public class MemberController extends HttpServlet {
 	
 		  if(cookNo == 0) {
 			  
-			  if(url.contains("memberLogin.do")) {				  
+			  if(url.contains("Login.do")) {				  
 			  
-			  }else if(url.contains("memberLoginProc.do")) {				  
+			  }else if(url.contains("LoginProc.do")) {				  
 			
-			  }else if(url.contains("memberLogout.do")) {				  
+			  }else if(url.contains("Logout.do")) {				  
 		
 			  }else {
 			  
@@ -71,7 +71,7 @@ public class MemberController extends HttpServlet {
 		 
 
 		// 리스트
-		if (url.contains("memberList.do") == true) {
+		if (url.contains("List.do") == true) {
 			// DB처리
 			MemberDAO dao = new MemberDAO();
 
@@ -87,7 +87,7 @@ public class MemberController extends HttpServlet {
 			rd.forward(request, response);
 
 			// 뷰
-		} else if (url.contains("memberView.do") == true) {
+		} else if (url.contains("View.do") == true) {
 
 			String tmp = request.getParameter("no");
 			int no = Integer.parseInt(tmp);
@@ -108,7 +108,7 @@ public class MemberController extends HttpServlet {
 			rd.forward(request, response);
 
 			// 추가
-		} else if (url.contains("memberChuga.do") == true) {
+		} else if (url.contains("Chuga.do") == true) {
 
 			String page = "/WEB-INF/member/chuga.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(page);
@@ -151,10 +151,10 @@ public class MemberController extends HttpServlet {
 			String msg = "";
 			if (result > 0) {
 				msg = "회원이 등록되었습니다.";
-				link = path + "/member_servlet/memberList.do";
+				link = path + "/member_servlet/List.do";
 			} else {
 				msg = "회원을 등록하는 과정에서 오류가 발생되었습니다.";
-				link = path + "/member_servlet/memberChuga.do";
+				link = path + "/member_servlet/Chuga.do";
 			}
 
 			PrintWriter out = response.getWriter();
@@ -164,7 +164,7 @@ public class MemberController extends HttpServlet {
 			out.print("</script>");
 
 			// 수정
-		} else if (url.contains("memberSujung.do") == true) {
+		} else if (url.contains("Sujung.do") == true) {
 
 			String tmp = request.getParameter("no");
 			int no = Integer.parseInt(tmp);
@@ -196,7 +196,7 @@ public class MemberController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
 
-		} else if (url.contains("memberSujungProc.do") == true) {
+		} else if (url.contains("SujungProc.do") == true) {
 
 			String tmp = request.getParameter("no");
 			int no = Integer.parseInt(tmp);
@@ -230,10 +230,10 @@ public class MemberController extends HttpServlet {
 			String msg = "";
 			if (result > 0) {
 				msg = "회원이 수정되었습니다.";
-				link = path + "/member_servlet/memberList.do";
+				link = path + "/member_servlet/List.do";
 			} else {
 				msg = "회원을 수정하는 과정에서 오류가 발생되었습니다.";
-				link = path + "/member_servlet/memberSujung.do?no=" + no;
+				link = path + "/member_servlet/Sujung.do?no=" + no;
 			}
 			System.out.println(msg);
 			System.out.println(link);
@@ -245,7 +245,7 @@ public class MemberController extends HttpServlet {
 			out.print("</script>");
 
 			// 삭제
-		} else if (url.contains("memberSakjae.do") == true) {
+		} else if (url.contains("Sakjae.do") == true) {
 
 			String tmp = request.getParameter("no");
 			int no = Integer.parseInt(tmp);
@@ -266,7 +266,7 @@ public class MemberController extends HttpServlet {
 			rd.forward(request, response);
 
 			// 삭제 설정
-		} else if (url.contains("memberSakjaeProc.do") == true) {
+		} else if (url.contains("SakjaeProc.do") == true) {
 
 			String tmp = request.getParameter("no");
 			int no = Integer.parseInt(tmp);
@@ -281,10 +281,10 @@ public class MemberController extends HttpServlet {
 			String msg = "";
 			if (result > 0) {
 				msg = "회원이 삭제되었습니다.";
-				link = path + "/member_servlet/memberList.do";
+				link = path + "/member_servlet/List.do";
 			} else {
 				msg = "회원을 삭제하는 과정에서 오류가 발생되었습니다.";
-				link = path + "/member_servlet/memberSakjae.do?no=" + no;
+				link = path + "/member_servlet/Sakjae.do?no=" + no;
 			}
 
 			PrintWriter out = response.getWriter();
@@ -293,13 +293,13 @@ public class MemberController extends HttpServlet {
 			out.print("location.href = '" + link + "';");
 			out.print("</script>");
 
-		} else if (url.contains("memberLogin.do") == true) {
+		} else if (url.contains("Login.do") == true) {
 
 			String page = "/WEB-INF/member/login.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
 
-		} else if (url.contains("memberLoginProc.do") == true) {
+		} else if (url.contains("LoginProc.do") == true) {
 
 			String id = request.getParameter("id");
 			String passwd = request.getParameter("passwd");
@@ -332,7 +332,7 @@ public class MemberController extends HttpServlet {
 				link = path;
 			} else {
 				msg = "아이디나 비밀번호를 확인해주세요.";
-				link = path + "/member_servlet/memberLogin.do";
+				link = path + "/member_servlet/Login.do";
 			}
 
 			PrintWriter out = response.getWriter();
@@ -342,7 +342,7 @@ public class MemberController extends HttpServlet {
 			out.print("</script>");
 			
 
-		} else if (url.contains("memberLogout.do") == true) {
+		} else if (url.contains("Logout.do") == true) {
 
 			session.invalidate();
 			

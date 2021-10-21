@@ -56,13 +56,13 @@
 
 <script>
 	function list() {
-		location.href = '${path}/product_servlet/productList.do';
+		location.href = '${path}/product_servlet/List.do';
 	}
 
 	function sakjae() {
-		
+		sakjaeForm.enctype = "multipart/form-data";
 		sakjaeForm.method = 'post';
-		sakjaeForm.action = '${path}/product_servlet/productSakjaeProc.do';
+		sakjaeForm.action = '${path}/product_servlet/SakjaeProc.do';
 		sakjaeForm.submit();
 	}
 </script>

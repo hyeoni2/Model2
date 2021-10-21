@@ -26,7 +26,7 @@ public class ProductDAO {
 		
 	}
 	
-	public void getClose() {
+	public void getConnClose() {
 		
 		DB.dbConnClose(rs, pstmt, conn);
 	
@@ -60,7 +60,7 @@ public class ProductDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			getClose();
+			getConnClose();
 		}
 		
 		return list;
@@ -74,7 +74,7 @@ public class ProductDAO {
 			
 			String sql  = "";
 				   sql += " insert into Product values(";
-				   sql += " seq_Product.nextval, ?, ?, ?, ?, ?, sysdate";
+				   sql += " seq_Product.nextval, ?, ?, ?, ?, ?, sysdate, ?";
 				   sql += " )";
 				   
 			pstmt = conn.prepareStatement(sql);
@@ -83,6 +83,7 @@ public class ProductDAO {
 			pstmt.setString(3, dto.getDescription());
 			pstmt.setString(4, dto.getProduct_img());
 			pstmt.setString(5, dto.getProduct_img_original());
+			pstmt.setString(6, dto.getProductImgInfo());
 			
 			
 			result = pstmt.executeUpdate();
@@ -90,7 +91,7 @@ public class ProductDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			getClose();
+			getConnClose();
 		}
 		
 		return result;
@@ -114,13 +115,14 @@ public class ProductDAO {
 				dto.setDescription(rs.getString("description"));
 				dto.setProduct_img(rs.getString("product_img"));
 				dto.setProduct_img_original(rs.getString("product_img_original"));
+				dto.setProductImgInfo(rs.getString("productImgInfo"));
 				dto.setRegi_date(rs.getDate("regi_date"));
 			}
 			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			getClose();
+			getConnClose();
 		}
 		
 		return dto;
@@ -134,7 +136,7 @@ public class ProductDAO {
 				
 				String sql  = "";
 					   sql += " update product set ";
-					   sql += " name = ?, price = ?, description = ?, product_img = ?, product_img_original = ? ";
+					   sql += " name = ?, price = ?, description = ?, product_img = ?, product_img_original = ? , productImgInfo = ?";
 					   sql += " where no = ?";
 					   
 				pstmt = conn.prepareStatement(sql);
@@ -143,14 +145,15 @@ public class ProductDAO {
 				pstmt.setString(3, dto.getDescription());
 				pstmt.setString(4, dto.getProduct_img());
 				pstmt.setString(5, dto.getProduct_img_original());			
-				pstmt.setInt(6, dto.getNo());
+				pstmt.setString(6, dto.getProductImgInfo());			
+				pstmt.setInt(7, dto.getNo());
 				result = pstmt.executeUpdate();
 				 
 				
 			}catch (Exception e) {
 				e.printStackTrace();
 			}finally {
-				getClose();
+				getConnClose();
 			}
 			
 			return result;
@@ -174,7 +177,7 @@ public class ProductDAO {
 			}catch (Exception e) {
 				e.printStackTrace();
 			}finally {
-				getClose();
+				getConnClose();
 			}
 			
 			return result;

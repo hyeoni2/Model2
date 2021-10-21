@@ -18,7 +18,7 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<a href="${path}/guestbook_servlet/guestbookList.do">목록으로</a>
+				<a href="${path}/guestbook_servlet/List.do">목록으로</a>
 			</td>
 			
 		</tr>

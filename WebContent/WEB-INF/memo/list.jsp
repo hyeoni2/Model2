@@ -102,13 +102,13 @@
 			
 
 		if(value1 == "M"){	
-			url = '${path}/memo_servlet/memoSujungProc.do';
+			url = '${path}/memo_servlet/SujungProc.do';
 			
 		}else if(value1 == "D"){	
-			url = '${path}/memo_servlet/memoSakjaeProc.do';
+			url = '${path}/memo_servlet/SakjaeProc.do';
 			
 		}else{
-			url = '${path}/memo_servlet/memoChugaProc.do';
+			url = '${path}/memo_servlet/ChugaProc.do';
 		}
 		
 		
@@ -142,7 +142,7 @@
 		</td>
 	
 		<td>
-			<a href="${path }/memo_servlet/memoView.do?no=${dto.no}">
+			<a href="${path }/memo_servlet/View.do?no=${dto.no}">
 				${dto.writer }
 			</a>
 		</td>

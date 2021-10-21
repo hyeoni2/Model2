@@ -56,7 +56,7 @@
 
 	
 	function list() {
-		location.href = '${path}/guestbook_servlet/guestbookList.do';
+		location.href = '${path}/guestbook_servlet/List.do';
 	}
 
 	function sujung() {
@@ -64,7 +64,7 @@
 
 		if(confirm('수정하시겠습니까?')){
 			sujungForm.method = 'post';
-			sujungForm.action = '${path}/guestbook_servlet/guestbookSujungProc.do';
+			sujungForm.action = '${path}/guestbook_servlet/SujungProc.do';
 			sujungForm.submit();
 		}	
 	}

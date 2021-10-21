@@ -51,13 +51,13 @@
 		
 </table>
 |
-<a href="${path }/memo_servlet/memoChuga.do">등록</a>
+<a href="${path }/memo_servlet/Chuga.do">등록</a>
 |
-<a href="${path }/memo_servlet/memoSujung.do?no=${dto.no}">수정</a>
+<a href="${path }/memo_servlet/Sujung.do?no=${dto.no}">수정</a>
 |
-<a href="${path }/memo_servlet/memoList.do">목록</a>
+<a href="${path }/memo_servlet/List.do">목록</a>
 |
-<a href="${path }/memo_servlet/memoSakjae.do?no=${dto.no}">삭제</a>
+<a href="${path }/memo_servlet/Sakjae.do?no=${dto.no}">삭제</a>
 |
 
 </c:forEach>

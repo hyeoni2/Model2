@@ -1,6 +1,6 @@
 package product.model.dto;
 
-import java.io.File;
+
 import java.sql.Date;
 
 public class ProductDTO {
@@ -11,6 +11,7 @@ public class ProductDTO {
 	private String description;
 	private String product_img;
 	private String product_img_original;
+	private String productImgInfo;
 	
 
 
@@ -75,11 +76,17 @@ public class ProductDTO {
 	public void setRegi_date(Date regi_date) {
 		this.regi_date = regi_date;
 	}
-	
-	
 
 	
+	public String getProductImgInfo() {
+		return productImgInfo;
+	}
+
+	public void setProductImgInfo(String productImgInfo) {
+		this.productImgInfo = productImgInfo;
+	}
 	
+
 
 
 }
